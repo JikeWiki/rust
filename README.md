@@ -78,6 +78,8 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 
 - [03-rust项目的构建工具](./tutorial/03-cargo.md)
 
+- [04-猜数字游戏](./tutorial/04-guessing_game.md)
+
 
 
 
