@@ -99,6 +99,151 @@ println!("你猜的数字是: {}", guess);
 ```
 
 
+### 2.2. 生成神秘数字
+
+**下载依赖包**
+
+我们首先需要生成1到100之间的随机数，但是rust标准里并不包含生成随机数字的功能，不过官方提供了一个`crate`用于生成随机数，`crate`名称叫做`rand`。`crate`仓库的官方网站是：[https://crates.io/](https://crates.io/)，我们可以在crate官方网站中找到相关的`crate`。
+
+
+在rust里， `crate`我们可以叫做“库”或者“包”，crate可以分为两种，一是我们构建好的二进制可运行文件，另一种是library，library的功能就是给其他程序使用。
+
+
+
+我们在项目的`Cargo.toml`文件中引入`rand`库，如下
+
+```toml
+[package]
+name = "guessing_game"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.3.14"
+```
+
+在上面的配置文件中，我们在`dependencies`中新加了一行`rand = "0.3.14"`，左边代表库的名称，右边代表库的版本号，表示的是我们项目需要依赖这个库。当我们执行`cargo build`之后，cargo会去[crates.io](crates.io)下载我们定义的`rand`库到本地，同时`rand`库依赖的库也会被下载到本地。下载完成之后会执行编译，如果本地存在了对应的库，则直接执行编译。
+
+
+`cargo`第一次执行`cargo build`命令的时候，会生成`Cargo.lock`文件，该文件保存了当前项目依赖的所有库以及对应的库版本，如果下次继续执行`build`指令，`cargo`将直接从`Cargo.lock`中直接读取依赖库信息，并加载到我们的项目中。
+
+当我们希望`cargo`读取的是`Cargo.toml`文件获取版本信息，而不是`Cargo.lock`获取版本信息时，我们可以通过`cargo update`命令更新依赖，`cargo`会根据`Cargo.toml`提供的版本信息更新依赖,并且再次写入到`Cargo.lock`中。
+
+
+
+**引入trait**
+
+trait类似于Java中的接口，但trait不是用于继承，而是引用，引用trait之后，可以使用trait定义的相关方法。下面我们引入`rand`库中的`Rng`，如下
+
+
+```rust
+use rand::Rng;
+```
+
+引入之后我们就可以使用生成随机数的函数了，我们先将生成的随机数打印出来，如下代码
+
+
+```rust
+let secret_number = rand::thread_rng().gen_range(1, 101);
+println!("神秘数字是{}", secret_number);
+```
+
+在上面代码中，我们调用`rand::thread_rng()`生成了一个随机数生成器，再调用`gen_range()`方法实现了随机数的生成，这个方法的第一个参数是最小值闭区间，第二个参数是最大值开区间。
+
+
+### 2.3. 比较猜测的数字与神秘数字
+
+我们需要比较`gues` 和 `secret_number`这两个变量，首先我们需要从标准库中引入如下`cmp::Ordering`，如下代码
+
+```rust
+use std::cmp::Ordering;
+```
+
+这里的`Ordering`是个枚举类型，包含三个值，如下
+
+- Less: 小于
+- Greater: 大于
+- Equal: 等于
+
+
+
+比较的代码如下
+
+```rust
+// 先将guess变量转换为整数类型
+let guess: u32 = guess.trim().parse().expect("Please type a number")
+
+
+match guess.cmp(&secret_number){
+    Ordering::Less => println!("Too small!"),
+    Ordering::Greater => print!("To big!"),
+    Ordering::Equal => println!("You win"),
+}
+```
+
+在上面的代码中，我们使用一个同名的u32类型的变量`guess`，这样，在该行代码之上定义的String类型的`guess`变量就会被隐藏（shadow）。在该行代码以后，遇到的`guess`则是u32类型的`guess`。这个特性通常使用在我们需要类型转换的场景中，这样我们无需新起一个变量名，而是直接使用之前的变量名。
+
+
+`trim`: trim函数会把字符串两边的空白内容去掉
+`parse`: parse函数会把将字符串解析成u32类型
+
+
+实际上，我们生成的随机数`secret_number`默认是i32类型，但是在往下的代码中，`secret_number`被用于与`guess`做对比，所以根据rust类型解析与推倒的机制，`secret_number`在编译的时候转变为了u32。
+
+
+
+
+## 3. 运行程序
+
+最终`main.rs`文件编写的程序代码如下
+
+```rust
+use rand::Rng;
+use std::cmp::Ordering;
+use std::io;
+
+fn main() {
+    println!("猜数游戏!");
+    let secret_number = rand::thread_rng().gen_range(1, 101);
+    println!("神秘数字是{}", secret_number);
+
+    println!("猜一个数字");
+    let mut guess = String::new();
+    io::stdin().read_line(&mut guess).expect("无法读取行");
+    println!("你猜的数字是: {}", guess);
+
+    // 先将guess变量转换为整数类型
+    let guess: u32 = guess.trim().parse().expect("Please type a number");
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => print!("To big!"),
+        Ordering::Equal => println!("You win"),
+    }
+}
+```
+
+编译
+
+```shell
+cargo build
+```
+
+运行
+```shell
+target/debug/guessing_game
+```
+
+
+
+
+
+
+
+
+
 
 
 
