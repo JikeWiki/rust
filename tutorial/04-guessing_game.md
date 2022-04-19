@@ -193,6 +193,74 @@ match guess.cmp(&secret_number){
 实际上，我们生成的随机数`secret_number`默认是i32类型，但是在往下的代码中，`secret_number`被用于与`guess`做对比，所以根据rust类型解析与推倒的机制，`secret_number`在编译的时候转变为了u32。
 
 
+### 2.4. 多次猜测
+
+在以上的程序中，用户只能猜测一次数据是否正确，为了能实现多次猜测，我们需要做一个无线循环。我们吧才猜测的逻辑放在`loop`中，即可实现无限循环。
+
+```rust
+loop {
+    println!("猜一个数字");
+    let mut guess = String::new();
+    io::stdin().read_line(&mut guess).expect("无法读取行");
+    println!("你猜的数字是: {}", guess);
+
+    // 先将guess变量转换为整数类型
+    let guess: u32 = guess.trim().parse().expect("Please type a number");
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => print!("To big!"),
+        Ordering::Equal => println!("You win"),
+    }
+}
+```
+
+但上面的程序中，即使我们猜对了，也不会停止。我们应该将逻辑改为，让输入正确之后，我们应当跳出循环，改为如下代码
+
+```rust
+loop {
+    println!("猜一个数字");
+    let mut guess = String::new();
+    io::stdin().read_line(&mut guess).expect("无法读取行");
+    println!("你猜的数字是: {}", guess);
+
+    // 先将guess变量转换为整数类型
+    let guess: u32 = guess.trim().parse().expect("Please type a number");
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => print!("To big!"),
+        Ordering::Equal => {
+            println!("You win");
+            break;
+        }
+    }
+}
+```
+
+### 2.5. 完善程序
+
+**完善健壮性**
+
+如果我们在在猜数的时候，输入的是一个非数字的字符，程序将被异常退出，我们在解析数字的时候使用`match`表达式，表达式里针对不同的枚举结果进行不同的处理，如下代码
+
+```rust
+let guess: u32 = match guess.trim().parse(){
+    // 解析正确时将数字返回
+    Ok(num) => num,
+    // 解析错误时，使用 continue 跳出本次循环，进行下一次循环
+    Err(_) => continue
+};
+```
+
+
+**取消提示**
+
+还需注意的是，如果我们的目的是让用户玩这个游戏，那么就不应该把结果打印出来，所以去掉下面这行代码
+
+```rust
+println!("神秘数字是{}", secret_number);
+```
 
 
 ## 3. 运行程序
@@ -207,20 +275,29 @@ use std::io;
 fn main() {
     println!("猜数游戏!");
     let secret_number = rand::thread_rng().gen_range(1, 101);
-    println!("神秘数字是{}", secret_number);
 
-    println!("猜一个数字");
-    let mut guess = String::new();
-    io::stdin().read_line(&mut guess).expect("无法读取行");
-    println!("你猜的数字是: {}", guess);
+    loop {
+        println!("猜一个数字");
+        let mut guess = String::new();
+        io::stdin().read_line(&mut guess).expect("无法读取行");
+        println!("你猜的数字是: {}", guess);
 
-    // 先将guess变量转换为整数类型
-    let guess: u32 = guess.trim().parse().expect("Please type a number");
+        // 先将guess变量转换为整数类型
+        let guess: u32 = match guess.trim().parse() {
+            // 解析正确时将数字返回
+            Ok(num) => num,
+            // 解析错误时，使用 continue 跳出本次循环，进行下一次循环
+            Err(_) => continue,
+        };
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => print!("To big!"),
-        Ordering::Equal => println!("You win"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => print!("To big!"),
+            Ordering::Equal => {
+                println!("You win");
+                break;
+            }
+        }
     }
 }
 ```
