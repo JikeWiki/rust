@@ -80,6 +80,10 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 
 - [04-猜数字游戏](./tutorial/04-guessing_game.md)
 
+- [05-变量与可变性](./tutorial/05-variables.md)
+
+- [06-数据类型](./tutorial/06-data_type.md)
+
 
 
 
