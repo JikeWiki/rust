@@ -84,6 +84,8 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 
 - [06-数据类型](./tutorial/06-data_type.md)
 
+- [07-函数](./tutorial/06-function.md)
+
 
 
 
