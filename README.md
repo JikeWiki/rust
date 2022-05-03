@@ -88,6 +88,8 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 
 - [08-流程控制](./tutorial/08-control.md)
 
+- [09-栈内存与堆内存](./tutorial/09-stack_vs_heap.md)
+
 
 
 
