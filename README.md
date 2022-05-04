@@ -90,6 +90,8 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 
 - [09-栈内存与堆内存](./tutorial/09-stack_vs_heap.md)
 
+- [10-所有权规则](./tutorial/10-rule.md)
+
 
 
 

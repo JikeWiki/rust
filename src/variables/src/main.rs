@@ -1,4 +1,6 @@
 fn main() {
-    let guess: u32 = "42".parse().expect("Not a number!");
-    println!("You guessed: {}", guess);
+    let x = 5;
+    let y = x;
+
+    print!("{}, {}", x, y);
 }
