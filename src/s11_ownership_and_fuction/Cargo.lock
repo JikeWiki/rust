@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "func"
+name = "s11_ownership_and_fuction"
 version = "0.1.0"

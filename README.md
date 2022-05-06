@@ -72,25 +72,27 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 ## 二、Rust知识目录
 
 
-- [01-Rust的安装](./tutorial/01-install.md)
+- [01-Rust的安装](./docs/01-install.md)
 
-- [02-编写第一个Rust程序](./tutorial/02-helloword.md)
+- [02-编写第一个Rust程序](./docs/02-helloword.md)
 
-- [03-rust项目的构建工具](./tutorial/03-cargo.md)
+- [03-rust项目的构建工具](./docs/03-cargo.md)
 
-- [04-猜数字游戏](./tutorial/04-guessing_game.md)
+- [04-猜数字游戏](./docs/04-guessing_game.md)
 
-- [05-变量与可变性](./tutorial/05-variables.md)
+- [05-变量与可变性](./docs/05-variables.md)
 
-- [06-数据类型](./tutorial/06-data_type.md)
+- [06-数据类型](./docs/06-data_type.md)
 
-- [07-函数](./tutorial/07-function.md)
+- [07-函数](./docs/07-function.md)
 
-- [08-流程控制](./tutorial/08-control.md)
+- [08-流程控制](./docs/08-control.md)
 
-- [09-栈内存与堆内存](./tutorial/09-stack_vs_heap.md)
+- [09-栈内存与堆内存](./docs/09-stack_vs_heap.md)
 
-- [10-所有权规则](./tutorial/10-rule.md)
+- [10-所有权规则](./docs/10-ownership_rule.md)
+
+- [11-所有权与函数](./docs/11-ownership_and_fuction.md)
 
 
 
