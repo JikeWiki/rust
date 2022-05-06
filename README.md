@@ -94,6 +94,8 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 
 - [11-所有权与函数](./docs/11-ownership_and_fuction.md)
 
+- [12-引用与借用](./docs/12-reference.md)
+
 
 
 

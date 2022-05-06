@@ -1,18 +1,15 @@
 fn main() {
-    let s = String::from("Hello world");
+    let s1 = String::from("hello");
 
-    take_ownership(s);
+    // 在main函数里将s1的所有权移动给calculate_length函数，在 calculate_length 再将所有权移交回来
+    let (s1, len) = calculate_length(s1);
 
-    let x = 5;
-    makes_copy(x);
-
-    println!("x: {}", x)
+    println!("The length of '{}' is {}.", s1, len);
 }
 
-fn take_ownership(some_string: String) {
-    println!("{}", some_string)
-}
+fn calculate_length(s: String) -> (String, usize) {
+    let length = s.len();
 
-fn makes_copy(some_number: i32) {
-    println!("{}", some_number)
+    // calculate_length 函数再将s的所有权移动给 调用它的函数
+    (s, length)
 }
