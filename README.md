@@ -1,16 +1,14 @@
 # Rust知识文档
 
-
 ## 一、Rust相关概念与简介
 
 ## 1. 为什么要使用Rust？
 
 Rust是一种令人兴奋的新兴编程语言，它可以让每个人编写可靠且高效的软件。Rust可以用来替换C/C++，Rust和他们具有相同的性能，但是很多常见的bug在编译时就可以被消灭。Rust是一种通用的编程语言，但是它更善于以下场景：
 
-  - 需要运行时的速度
-  - 需要内存安全
-  - 更好地利用多核处理器
-
+- 需要运行时的速度
+- 需要内存安全
+- 更好地利用多核处理器
 
 ## 2. Rust与其他语言的比较
 
@@ -20,7 +18,6 @@ C/C++性能非常好，但类型系统和内存都不太安全。Java/C#拥有GC
 - 无需GC
 - 易于维护、调试，代码安全高效
 
-
 ## 3. Rust擅长的领域
 
 - 高性能的 Web Service
@@ -29,11 +26,9 @@ C/C++性能非常好，但类型系统和内存都不太安全。Java/C#拥有GC
 - 嵌入式设备
 - 系统编程
 
-
 ## 4. Rust与Firefox
 
 Rust最初是 Mozilla 公司一个研究性项目。Firefox 是 Rust 产品应用的一个重要的例子。Mozzilla一直以来都在使用 Rust 创建一个名为Servo 的实验性浏览器引擎，其中所有内容都是并行执行的。目前 Servo 的部分功能已经被集成到 Firefox 里面了。Firefox原来的量子版就包含了 Servo 的CSS渲染引擎，Rust使得 Firefox 在这方面得到了巨大的性能改进。
-
 
 ## 5. Rust的用户案例
 
@@ -53,7 +48,6 @@ Rust最初是 Mozilla 公司一个研究性项目。Firefox 是 Rust 产品应�
 
 - Drobox、Yelp、Coursera、LINE、Cloudflare、Alassian、npm、Ceph、百度、华为、Sentry、Deno...
 
-
 ## 6. Rust的优点
 
 - 性能高
@@ -62,15 +56,11 @@ Rust最初是 Mozilla 公司一个研究性项目。Firefox 是 Rust 产品应�
 
 - 无所畏惧的并发
 
-
 ## 8. 注意
 
 Rust 有很多独有的概念，它们和现在大多数主流语言都不同，所以学习 Rust 的时候必须从基础概念一步一步地学
 
-
-
 ## 二、Rust知识目录
-
 
 - [01-Rust的安装](./docs/01-install.md)
 
@@ -99,10 +89,3 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [13-切片](./docs/13-slice.md)
 
 - [14-定义和实例化struct](./docs/14-struct.md)
-
-
-
-
-
-
-

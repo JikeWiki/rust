@@ -80,4 +80,3 @@ fn calculate_length(s: String) -> (String, usize) {
 ```
 
 但以上这种做法我们不得不将参数传进函数里，再将参数返回回来，而Rust中的“引用”特性可以完美地解决这个问题。
-

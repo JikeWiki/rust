@@ -7,7 +7,6 @@ struct，结构体
 - 自定义的数据类型
 - 为相关联的值命名，打包组成有意义的组合
 
-
 ## 2. struct的使用
 
 ### 2.1. 定义struct
@@ -19,15 +18,14 @@ struct，结构体
 
 ```rust
 struct User{
-	username: String,
-	email: String,
-	sign_in_count: u64,
-	active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
 }
 ```
 
 在定义每一个字段的后面都需要包含一个“逗号”，即使是最后一个字段也需要包含逗号
-
 
 ### 2.2. 实例化struct
 
@@ -36,27 +34,22 @@ struct User{
 - 为每个字段指定具体值
 - 无需按照声明的顺序进行指定
 
-
-
 ### 2.3. 取得struct里面的某个值
 
 使用点标记法，如下代码
 
 ```rust
 let mut user1 = User{
-	email: String::from("some@example.com"),
-	username: String::from("someusername123"),
-	active: true,
-	sign_in_count: 1,
+    email: String::from("some@example.com"),
+    username: String::from("someusername123"),
+    active: true,
+    sign_in_count: 1,
 }
 
 user1.email = String::from("another@example.com")
 ```
 
-
-
 > 注意：一旦struct的实例是可变的，那么实例中所有字段都是可变的
-
 
 ### 2.4. struct作为函数的返回值
 
@@ -64,12 +57,12 @@ struct可以作为函数的返回值，如下代码
 
 ```rust
 fn build_user(email: String, username: String)-> User{
-	User {
-		email: email,
-		username: username,
-		active: true,
-		sign_in_count: 1,
-	}
+    User {
+        email: email,
+        username: username,
+        active: true,
+        sign_in_count: 1,
+    }
 }
 ```
 
@@ -77,12 +70,12 @@ fn build_user(email: String, username: String)-> User{
 
 ```rust
 fn build_user(email: String, username: String)->User{
-	User{
-		email,
-		username,
-		active: true,
-		sign_in_count: 1,
-	}
+User{
+    email,
+    username,
+    active: true,
+    sign_in_count: 1,
+}
 }
 ```
 
@@ -92,10 +85,10 @@ fn build_user(email: String, username: String)->User{
 
 ```rust
 let user2 = User{
-	email: String::from("another@example.com"),
-	username: String::from("anotheruser567"),
-	active: user1.active,
-	sign_in_count: user1.sign_in_count
+    email: String::from("another@example.com"),
+    username: String::from("anotheruser567"),
+    active: user1.active,
+    sign_in_count: user1.sign_in_count
 };
 ```
 
@@ -103,12 +96,11 @@ let user2 = User{
 
 ```shell
 let user2 = User{
-	email: String::from("another@example"),
-	username: String::from("anotherusername567"),
-	..user1
+    email: String::from("another@example"),
+    username: String::from("anotherusername567"),
+    ..user1
 };
 ```
-
 
 ### 2.6. Tuple struct
 
@@ -134,17 +126,16 @@ black和origin是不通的类型，是不通的tuple struct实例
 
 - 适用于某个类型上实现某个trait，但是在里面又没有想要存储的数据
 
-
 ### 2.8. struct数据的所有权
 
 我们先看如下代码
 
 ```rust
 struct User{
-	username: String,
-	email: String,
-	sign_in_count: u64,
-	active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    active: bool,
 }
 ```
 
@@ -158,15 +149,3 @@ struct里也可以存放引用，但需要使用生命周期（生命周期后�
 - 生命周期保证只要struct实例是有效的，那么里面的引用也是有效的
 
 - 如果struct里存储引用，而不使用生命周期，那么就会报错
-
-
-
-
-
-
-
-
-
-
-
-

@@ -2,7 +2,6 @@
 
 ## 1. 文件命名规范
 
-
 我们通常使用一个 英文名称的 空目录作为 `Rust` 项目的目录，并遵循以下规范：
 
 - 程序文件名后缀为： `rs`
@@ -10,15 +9,13 @@
 
 ## 2. 编写第一个Rust程序
 
-
 ### 2.1. 创建代码
 
 创建一个名为`hello_world`的目录，在目录下创建`main.rs`文件，写入以下内容
 
-
 ```rust
 fn main() {
-	println!("Hello, world!");
+    println!("Hello, world!");
 }
 ```
 
@@ -30,9 +27,7 @@ fn main() {
 
 - 打印文本: `println!("Hello, world!")`，Rust代码的缩进是4个空格，而不是tab，`println!`是 Rust macro(宏)，如果是函数，就没有`!`，Rust代码以`;`结尾
 
-
 以上代码的功能是: 在`mian` 函数中调用 `println!`宏 在控制台打印了一条字符串："Hello, world!"
-
 
 ### 2.2. 编译代码
 
@@ -42,10 +37,9 @@ fn main() {
 rustc main.rs
 ```
 
-
 如果是在windows编译，生成的可执行文件名称为`main.exe`，使用以下命令执行
 
-```
+```bat
 .\main.exe
 ```
 
@@ -56,8 +50,8 @@ rustc main.rs
 ```
 
 ## 3. 总结
- 
-- Rust 代码先编译成二进制可执行程序才能运行，编译命令为 `rustc 源代码文件名` ，如
+
+Rust 代码先编译成二进制可执行程序才能运行，编译命令为 `rustc 源代码文件名` ，如
 
 ```shell-script
 rustc main.rs
