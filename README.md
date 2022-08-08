@@ -89,3 +89,11 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [13-切片](./docs/13-slice.md)
 
 - [14-定义和实例化struct](./docs/14-struct.md)
+
+- [15-定义和实例化struct](./docs/15-struct_sample.md)
+
+- [16-struct的方法](./docs/16-struct_method.md)
+
+- [17-定义枚举](./docs/17-enum_define.md)
+
+- [18-option枚举](./docs/18-option_enum.md)
