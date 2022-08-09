@@ -101,3 +101,7 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [19-控制流运算符-match](./docs/19-match.md)
 
 - [20-控制流运算符-if_let](./docs/20-if_let.md)
+
+- [20-控制流运算符-if_let](./docs/20-if_let.md)
+
+- [21-package_create_module](./docs/21-package_crate_module.md)
