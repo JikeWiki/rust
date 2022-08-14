@@ -107,3 +107,5 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [21-package_create_module](./docs/21-package_crate_module.md)
 
 - [22-路径](./docs/22-path.md)
+
+- [23-use](./docs/23-use.md)
