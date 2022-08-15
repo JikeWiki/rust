@@ -114,4 +114,4 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 
 - [25-vector_enum](./docs/25-vector_enum.md)
 
-- [26-streing](./docs/26-string.md)
+- [26-字符串](./docs/26-string.md)
