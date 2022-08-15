@@ -109,3 +109,9 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [22-路径](./docs/22-path.md)
 
 - [23-use](./docs/23-use.md)
+
+- [24-vector](./docs/24-vector.md)
+
+- [25-vector_enum](./docs/25-vector_enum.md)
+
+- [26-streing](./docs/26-string.md)
