@@ -117,3 +117,5 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [27-字符串的标识形式和切割](./docs/27-string_cut.md)
 
 - [28-hashmap](./docs/28-hashmap.md)
+
+- [29-hashmap的更新](./docs/29-hashmap_update.md)
