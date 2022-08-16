@@ -102,8 +102,6 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 
 - [20-控制流运算符-if_let](./docs/20-if_let.md)
 
-- [20-控制流运算符-if_let](./docs/20-if_let.md)
-
 - [21-package_create_module](./docs/21-package_crate_module.md)
 
 - [22-路径](./docs/22-path.md)
@@ -115,3 +113,5 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [25-vector_enum](./docs/25-vector_enum.md)
 
 - [26-字符串的创建与更新](./docs/26-string_create_update.md)
+
+- [27-字符串的标识形式和切割](./docs/27-string_cut.md)
