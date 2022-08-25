@@ -119,3 +119,7 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [28-hashmap](./docs/28-hashmap.md)
 
 - [29-hashmap的更新](./docs/29-hashmap_update.md)
+
+- [30-不可恢复错误与panic](./docs/30-panic.md)
+
+- [31-result_enum_01](./docs/31-result_enum_01.md)
