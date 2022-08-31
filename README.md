@@ -122,4 +122,6 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 
 - [30-不可恢复错误与panic](./docs/30-panic.md)
 
-- [31-result_enum_01](./docs/31-result_enum_01.md)
+- [31-result枚举与可恢复错误-上](./docs/31-result_enum_01.md)
+
+- [32-result枚举与可恢复错误-下](./docs/32-result_enum_02.md)
