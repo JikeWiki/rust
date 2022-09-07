@@ -127,3 +127,5 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [32-result枚举与可恢复错误-下](./docs/32-result_enum_02.md)
 
 - [33-何时使用panic](./docs/33-panic.md)
+
+- [34-泛型数据类型](./docs/34-genericity.md)
