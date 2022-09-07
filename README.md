@@ -129,3 +129,5 @@ Rust 有很多独有的概念，它们和现在大多数主流语言都不同，
 - [33-何时使用panic](./docs/33-panic.md)
 
 - [34-泛型数据类型](./docs/34-genericity.md)
+
+- [35-Trait](./docs/35-trait.md)
