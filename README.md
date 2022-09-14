@@ -131,3 +131,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [34-泛型数据类型](./docs/34-genericity.md)
 
 - [35-Trait](./docs/35-trait.md)
+
+- [36-声明周期](./docs/36-lifetime.md)
