@@ -133,3 +133,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [35-Trait](./docs/35-trait.md)
 
 - [36-生命周期](./docs/36-lifetime.md)
+
+- [37-编写测试](./docs/37-test.md)
