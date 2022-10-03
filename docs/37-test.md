@@ -135,7 +135,7 @@ pub fn greeting(name: &str) -> String {
 
 #[cfg(test)]
 mod tests {
-    use supper::*;
+    use super::*;
     #[test]
     fn greeting_contains_name() {
         let  result = greeting("Carol");
@@ -165,7 +165,7 @@ impl Guess {
 
 #[cfg(test)]
 mod test {
-    use supper::*;
+    use super::*;
 
     #[test]
     #[should_panic]
@@ -196,7 +196,7 @@ impl Guess {
 
 #[cfg(test)]
 mod test {
-    use supper::*;
+    use super::*;
 
     #[test]
     #[should_panic(expected = "Guess value must be less than or equal to 100")]

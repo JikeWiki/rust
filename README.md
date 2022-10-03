@@ -135,3 +135,7 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [36-生命周期](./docs/36-lifetime.md)
 
 - [37-编写测试](./docs/37-test.md)
+
+- [38-控制测试运行](./docs/38-control_test_running.md)
+
+- [39-测试的组织](./docs/39-test_orgnize.md)
