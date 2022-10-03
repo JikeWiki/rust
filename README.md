@@ -139,3 +139,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [38-控制测试运行](./docs/38-control_test_running.md)
 
 - [39-测试的组织](./docs/39-test_orgnize.md)
+
+- [40-示例项目](./docs/40-sample_project.md)
