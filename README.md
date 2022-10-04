@@ -145,3 +145,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [41-闭包](./docs/41-closure.md)
 
 - [42-迭代器](./docs/42-iterator.md)
+
+- [43-使用迭代器优化IO项目](./docs/43-iterator_project.md)
