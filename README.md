@@ -141,3 +141,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [39-测试的组织](./docs/39-test_orgnize.md)
 
 - [40-示例项目](./docs/40-sample_project.md)
+
+- [41-闭包](./docs/41-closure.md)
