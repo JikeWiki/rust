@@ -155,3 +155,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [46-cargo的工作空间](./docs/46-cargo_workspace.md)
 
 - [47-安装二进制crate](./docs/47-install_crate.md)
+
+- [48-智能指针概述](./docs/48-install_crate.md)
