@@ -157,3 +157,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [47-安装二进制crate](./docs/47-install_crate.md)
 
 - [48-智能指针概述](./docs/48-install_crate.md)
+
+- [49-使用Box<T>来指向Heap上的数据](./docs/49-box_point_to_heap.md)
