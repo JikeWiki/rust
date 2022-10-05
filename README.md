@@ -149,3 +149,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [43-使用迭代器优化IO项目](./docs/43-iterator_project.md)
 
 - [44-cargo](./docs/44-cargo.md)
+
+- [45-发布crate](./docs/45-publish_crate.md)
