@@ -163,3 +163,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [50-Deref Trait](./docs/50-deref_trait.md)
 
 - [51-Drop Trait](./docs/51-drop_trait.md)
+
+- [52-Rc](./docs/52-rc.md)
