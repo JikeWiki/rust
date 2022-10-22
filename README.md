@@ -167,3 +167,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [52-Rc](./docs/52-rc.md)
 
 - [53-RefCell<T>和内部可变性](./docs/53-ref_cell.md)
+
+- [54-循环引用导致内存泄漏](./docs/54-oom.md)
