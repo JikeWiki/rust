@@ -91,5 +91,158 @@ a的第二个元素是b，而的第二个元素是a，以此循环，最终导�
 我们先看以下的示例
 
 ```rust
-05.48
+use std::rc::Rc;
+use std::cell::RefCell;
+
+#[derive(Debug)]
+// 定义树的节点
+struct Node {
+    value: i32,
+    // 使用Rc<Node>为了让所有的子节点能够共享所有权
+    children: RefCell<Vec<Rc<Node>>>
+}
+
+fn main() {
+    // 创建一个树叶
+    let leaf = Rc::new(Node {
+        value: 3,
+        children: RefCell::new(vec![]),
+    });
+
+    // 创建一个树枝
+    let branch = Rc::new(Node {
+        value: 5,
+        children: RefCell::new(vec![Rc::clone(&leaf)]),
+    });
+}
 ```
+
+上面示例代码中，我们可以通过树枝找到叶子，但还不可以通过叶子找到树枝，因为树叶还不持有树枝的引用，它对它们两之间的父子关系一无所知。所以我门需要修改一下代码，但是双向的引用会是循环引用，这个时候我们就可以使用`Weak<T>`，让它避免产生循环引用。修改代码如下
+
+```rust
+use std::borrow::Borrow;
+use std::rc::{Rc, Weak};
+use std::cell::RefCell;
+
+#[derive(Debug)]
+// 定义树的节点
+struct Node {
+    value: i32,
+    parent: RefCell<Weak<Node>>,
+    // 使用Rc<Node>为了让所有的子节点能够共享所有权
+    children: RefCell<Vec<Rc<Node>>>
+}
+
+fn main() {
+    // 创建一个叶子
+    let leaf = Rc::new(Node {
+        value: 3,
+        parent: RefCell::new(Weak::new()),
+        children: RefCell::new(vec![]),
+    });
+
+    // 通过树叶找到树枝，通过borrow()获得不可变引用，在通过upgrade()将Weak<T>转换为Rc<T>
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
+
+    // 创建一个树枝
+    let branch = Rc::new(Node {
+        value: 5,
+        parent: RefCell::new(Weak::new()),
+        children: RefCell::new(vec![Rc::clone(&leaf)]),
+    });
+
+    // 让树叶的parent指向树枝
+    *leaf.parent.borrow_mut() = Rc::downgrade(&branch);
+
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
+}
+```
+
+为了观察数据强引用也弱引用的计数变化，我们修改代码如下
+
+```rust
+use std::borrow::Borrow;
+use std::cell::RefCell;
+use std::rc::{Rc, Weak};
+
+#[derive(Debug)]
+// 定义树的节点
+struct Node {
+    value: i32,
+    parent: RefCell<Weak<Node>>,
+    // 使用Rc<Node>为了让所有的子节点能够共享所有权
+    children: RefCell<Vec<Rc<Node>>>,
+}
+
+fn main() {
+    // 创建一个叶子
+    let leaf = Rc::new(Node {
+        value: 3,
+        parent: RefCell::new(Weak::new()),
+        children: RefCell::new(vec![]),
+    });
+    // 打印leaf
+    println!(
+        "leaf strong = {}, weak = {}",
+        Rc::strong_count(&leaf),
+        Rc::weak_count(&leaf)
+    );
+
+    // 一个作用域
+    {
+        // 创建一个树枝
+        let branch = Rc::new(Node {
+            value: 5,
+            parent: RefCell::new(Weak::new()),
+            children: RefCell::new(vec![Rc::clone(&leaf)]),
+        });
+
+        // 让树叶的parent指向树枝
+        *leaf.parent.borrow_mut() = Rc::downgrade(&branch);
+
+        // 打印branch
+        println!(
+            "branch strong = {}, weak = {}",
+            Rc::strong_count(&branch),
+            Rc::weak_count(&branch)
+        );
+
+        // 打印leaf
+        println!(
+            "leaf strong = {}, weak = {}",
+            Rc::strong_count(&leaf),
+            Rc::weak_count(&leaf)
+        );
+    }
+
+    // 使用leaf访问branch
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
+    // 打印leaf
+    println!(
+        "leaf strong = {}, weak = {}",
+        Rc::strong_count(&leaf),
+        Rc::weak_count(&leaf)
+    );
+
+}
+```
+
+运行结果如下
+
+```bash
+leaf strong = 1, weak = 0
+branch strong = 1, weak = 1
+leaf strong = 2, weak = 0
+leaf parent = None
+leaf strong = 1, weak = 0
+```
+
+根据结果，我们得出一下结论：
+
+- 创建`leaf`之后，有1个强引用，0个弱引用。
+
+- 然后进入一个作用域，在作用域里创建`branch`，再把`leaf`的parent连接到`branch`。`branch`有1个强引用，并且多了1个弱引用，因为`leaf`对其做了关联。这时候`leaf`有2个强引用，因为在创建`branch`的时候，`branch`中的`children`对其有一个强引用。
+
+- 最后走出作用域，通过`leaf`访问它的parent，得到的结果是None。此时`leaf`剩下本省1个强引用，而弱引用也是0。
+
+所以看一看到，`branch`离开作用域之后，它的强引用变成0，此时相当于被丢弃了。虽然在branch的生命周期内它拥有一个弱引用，但并不影响其数据的销毁。
