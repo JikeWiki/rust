@@ -171,3 +171,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [54-循环引用导致内存泄漏](./docs/54-oom.md)
 
 - [55-多线程同时运行代码](./docs/55-multithread.md)
+
+- [56-使用消息传递来跨线程传递数据](./docs/56-message_on_multithread.md)
