@@ -173,3 +173,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [55-多线程同时运行代码](./docs/55-multithread.md)
 
 - [56-使用消息传递来跨线程传递数据](./docs/56-message_on_multithread.md)
+
+- [57-共享状态的并发](./docs/57-share_parallet.md)
