@@ -177,3 +177,7 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [57-共享状态的并发](./docs/57-share_parallet.md)
 
 - [58-使用Sync和Send来扩展并发](./docs/58-sync_send.md)
+
+- [59-面向对象语言特性](./docs/59-oop.md)
+
+- [60-使用trait对象来存储不同类型的值](./docs/60-trait_save_different_value.md)
