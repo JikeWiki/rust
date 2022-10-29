@@ -185,3 +185,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [61-实现面向对象的设计模式](./docs/61-oop_design_pattern.md)
 
 - [62-用到模式匹配的地方](./docs/62-pattern_matching.md)
+
+- [63-模式匹配可使辩驳性](./docs/63-pattern_arguable.md)
