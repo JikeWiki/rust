@@ -191,3 +191,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [64-模式（匹配）语法](./docs/64-pattern_grammer.md)
 
 - [65-不安全rust](./docs/65-unsafe_rust.md)
+
+- [66-高级trait](./docs/66-advanced_trait.md)
