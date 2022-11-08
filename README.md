@@ -195,3 +195,5 @@ Rust是一门面向未来的编程语言，我相信学习Rust可以让自己未
 - [66-高级trait](./docs/66-advanced_trait.md)
 
 - [67-高级类型](./docs/67-advanced_type.md)
+
+- [68-高级函数和闭包](./docs/68-advanced_function.md)
