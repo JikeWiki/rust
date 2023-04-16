@@ -5,9 +5,9 @@
 ### 1.1 并发
 
 - Concurrent（并发）: 程序不同的部分之间独立执行
-- Parallet（并行）: 程序不同部分同时运行
+- Parallel（并行）: 程序不同部分同时运行
 
-Rust允许我们编写没有细微Bug的代码，并在不引入新bug的情况下易于重构。本文中的“并发”泛指concurrent和parallet。
+Rust允许我们编写没有细微Bug的代码，并在不引入新bug的情况下易于重构。本文中的“并发”泛指concurrent和Parallel。
 
 ### 1.2 进程与线程
 
