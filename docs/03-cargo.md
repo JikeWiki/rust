@@ -111,7 +111,7 @@ cargo check
 cargo build --release
 ```
 
-加上 `--release` 参数后，编译时代码会进行优化，编译的时候变长，但生成的二进制可执行文件执行效率也更高。生成的二进制可执行文件将保存在 `atrget/release` 目录中，而不是 `target/debug` 目录中。
+加上 `--release` 参数后，编译时代码会进行优化，编译的时候变长，但生成的二进制可执行文件执行效率也更高。生成的二进制可执行文件将保存在 `target/release` 目录中，而不是 `target/debug` 目录中。
 
 最后得出以下结论：
 
