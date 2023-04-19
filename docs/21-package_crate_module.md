@@ -19,7 +19,7 @@ rust的代码组织主要包括以下
 
 这些功能有时候统称为模块系统，模块系统包含如下内容
 
-- Package（包）：Cargo的特性，让你构建、测试、共享cr、ate
+- Package（包）：Cargo的特性，让你构建、测试、共享crate
 - Crate（共享包）：一个模块树，他可以产生一个library或者可执行文件
 - Module（模块）、use：让你控制代码的组织、作用域、私有路径
 - Path（路径）：为struct、function或者module等项命名的方式
