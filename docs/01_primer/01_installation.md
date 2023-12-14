@@ -1,4 +1,4 @@
-# Rust 的安装
+# 安装
 
 Rust 的官方网址是: [https://www.rust-lang.org/](https://www.rust-lang.org/)
 
