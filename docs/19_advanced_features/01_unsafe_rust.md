@@ -83,7 +83,7 @@ unsafe函数或方法指的是在函数或方法前加上了`unsafe`关键字，
 ```rust
 unsafe fn dangerous() {}
 
-fn mian() {
+fn main() {
     unsafe {
         dangerous();
     }

@@ -91,7 +91,7 @@ println!("你猜的数字是: {}", guess);
 
 #### 2.2.1 下载依赖包
 
-我们首先需要生成1到100之间的随机数，但是rust标准里并不包含生成随机数字的功能，不过官方提供了一个`crate`用于生成随机数，`crate`名称叫做`rand`。`crate`仓库的官方网站是：[https://crates.io/](https://crates.io/)，我们可以在crate官方网站中找到相关的`crate`。
+我们首先需要生成1到100之间的随机数，但是rust标准里并不包含生成随机数字的功能，不过官方提供了一个`crate`用于生成随机数，`crate`名称叫做`rand`。`crate`仓库的官方网站是：[https://crates.io]<https://crates.io>，我们可以在crate官方网站中找到相关的`crate`。
 
 在rust里， `crate`我们可以叫做“库”或者“包”，crate可以分为两种，一是我们构建好的二进制可运行文件，另一种是library，library的功能就是给其他程序使用。
 
@@ -109,7 +109,7 @@ edition = "2021"
 rand = "0.3.14"
 ```
 
-在上面的配置文件中，我们在`dependencies`中新加了一行`rand = "0.3.14"`，左边代表库的名称，右边代表库的版本号，表示的是我们项目需要依赖这个库。当我们执行`cargo build`之后，cargo会去[crates.io](crates.io)下载我们定义的`rand`库到本地，同时`rand`库依赖的库也会被下载到本地。下载完成之后会执行编译，如果本地存在了对应的库，则直接执行编译。
+在上面的配置文件中，我们在`dependencies`中新加了一行`rand = "0.3.14"`，左边代表库的名称，右边代表库的版本号，表示的是我们项目需要依赖这个库。当我们执行`cargo build`之后，cargo会去[crates.io]<https://crates.io>下载我们定义的`rand`库到本地，同时`rand`库依赖的库也会被下载到本地。下载完成之后会执行编译，如果本地存在了对应的库，则直接执行编译。
 
 `cargo`第一次执行`cargo build`命令的时候，会生成`Cargo.lock`文件，该文件保存了当前项目依赖的所有库以及对应的库版本，如果下次继续执行`build`指令，`cargo`将直接从`Cargo.lock`中直接读取依赖库信息，并加载到我们的项目中。
 

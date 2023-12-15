@@ -4,6 +4,7 @@ repo_url: https://github.com/webtechwiki/rust
 repo_name: Rust Chinese Wiki
 site_author: phy.xyz
 site_description: Rust快速入门
+edit_uri: tree/main/docs
 
 # Copyright
 copyright: Copyright &copy; 2022 - 2023 phy.xyz
@@ -96,6 +97,7 @@ markdown_extensions:
 
 # Page tree
 nav:
+  - 首页: index.md
   - 第 00 章 &nbsp; 前言:
     - 0.1 &nbsp; Rust简介: 00_preface/01_introduction.md
   - 第 01 章 &nbsp; 入门指南:
