@@ -1,8 +1,9 @@
-site_name: Rust中文文档
+site_name: Rust中文Wiki
 site_url: https://webtech.wiki/rust
 repo_url: https://github.com/webtechwiki/rust
 repo_name: Rust Chinese Wiki
-site_author: phyxyz
+site_author: phy.xyz
+site_description: Rust快速入门
 
 # Copyright
 copyright: Copyright &copy; 2022 - 2023 phy.xyz
@@ -36,6 +37,10 @@ theme:
       toggle:
         icon: material/theme-light-dark
         name: Switch to light mode
+  font:
+    text: Noto Sans SC
+    code: Fira Code
+  favicon: assets/img/favicon.ico
 
 # extra
 extra:
@@ -58,32 +63,127 @@ plugins:
       draggable: false
       auto_caption: false
       caption_position: bottom
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
 # Page tree
 nav:
-  - 第 0 章 &nbsp; 前言:
+  - 第 00 章 &nbsp; 前言:
     - 0.1 &nbsp; Rust简介: 00_preface/01_introduction.md
-  - 第 1 章 &nbsp; 入门指南:
+  - 第 01 章 &nbsp; 入门指南:
     - 1.1 &nbsp; 安装: 01_primer/01_installation.md
     - 1.2 &nbsp; 运行Hello World: 01_primer/02_hello_world.md
     - 1.3 &nbsp; Cargo构建工具: 01_primer/03_cargo.md
-  - 第 2 章 &nbsp; 猜数游戏:
+  - 第 02 章 &nbsp; 猜数游戏:
     - 2.1 &nbsp; 猜数游戏: 02_guessing_game/01_guessing_game.md
-  - 第 3 章 &nbsp; 通用编程概念:
+  - 第 03 章 &nbsp; 通用编程概念:
     - 3.1 &nbsp; 变量与可变性: 03_common_programming_concepts/01_variables.md
     - 3.2 &nbsp; 数据类型: 03_common_programming_concepts/02_data_type.md
     - 3.3 &nbsp; 函数: 03_common_programming_concepts/03_function.md 
     - 3.4 &nbsp; 控制流: 03_common_programming_concepts/04_control_flow.md
-  - 第 4 章 &nbsp; 所有权:
+  - 第 04 章 &nbsp; 所有权:
     - 4.1 &nbsp; 栈内存和堆内存: 04_ownership/01_stack_and_heap.md
     - 4.2 &nbsp; 所有权规则: 04_ownership/02_ownership_rules.md
     - 4.3 &nbsp; 所有权与函数: 04_ownership/03_ownership_and_function.md
     - 4.4 &nbsp; 引用与借用: 04_ownership/04_reference_and_borrow.md
     - 4.5 &nbsp; 切片: 04_ownership/05_slice.md
-  - 第 5 章 &nbsp; 使用结构体组织数据:
+  - 第 05 章 &nbsp; 使用结构体组织数据:
     - 5.1 &nbsp; 结构体: 05_struct/01_struct.md
     - 5.2 &nbsp; 结构体示例: 05_struct/02_struct_sample.md
     - 5.3 &nbsp; 结构体方法: 05_struct/03_struct_method.md
-  - 第 6 章 &nbsp; 枚举与模式匹配:
+  - 第 06 章 &nbsp; 枚举与模式匹配:
     - 6.1 &nbsp; 枚举: 06_enum/01_enum.md
     - 6.2 &nbsp; Option枚举: 06_enum/02_option_enum.md
     - 6.3 &nbsp; math表达式: 06_enum/03_match_expression.md
+    - 6.4 &nbsp; if let: 06_enum/04_if_let.md
+  - 第 07 章 &nbsp; 项目管理:
+    - 7.1 &nbsp; package、crate、module: 07_project_management/01_package_crate_module.md
+    - 7.2 &nbsp; 路径: 07_project_management/02_path.md
+    - 7.3 &nbsp; use: 07_project_management/03_use.md
+  - 第 08 章 &nbsp; 通用聚合类型:
+    - 8.1 &nbsp; vector: 08_aggregate_types/01_vector.md
+    - 8.2 &nbsp; vector和枚举: 08_aggregate_types/02_vector_and_enum.md
+    - 8.3 &nbsp; 创建和使用字符串: 08_aggregate_types/03_string.md
+    - 8.4 &nbsp; 字符串表现形式和切割: 08_aggregate_types/04_string_slice.md
+    - 8.5 &nbsp; 使用哈希映射存储键值对: 08_aggregate_types/05_hash_map.md
+    - 8.6 &nbsp; 更新哈希映射: 08_aggregate_types/06_update_hash_map.md
+  - 第 09 章 &nbsp; 错误处理:
+    - 9.1 &nbsp; 不可恢复错误与panic: 09_error_handling/01_panic.md
+    - 9.2 &nbsp; Result枚举与可恢复错误1: 09_error_handling/02_result_enum_1.md
+    - 9.3 &nbsp; Result枚举与可恢复错误2: 09_error_handling/03_result_enum_2.md
+    - 9.4 &nbsp; 何时使用panic: 09_error_handling/04_when_to_panic.md
+  - 第 10 章 &nbsp; 泛型/trait/生命周期:
+    - 10.1 &nbsp; 泛型: 10_generics_trait_lifetime/01_generics.md
+    - 10.2 &nbsp; Trait: 10_generics_trait_lifetime/02_trait.md
+    - 10.3 &nbsp; 生命周期: 10_generics_trait_lifetime/03_lifetime.md
+  - 第 11 章 &nbsp; 编写自动化测试:
+    - 11.1 &nbsp; 如何编写测试: 11_testing/01_how_to_test.md
+    - 11.2 &nbsp; 控制测试运行: 11_testing/02_control_test_running.md
+    - 11.3 &nbsp; 测试的组织结构: 11_testing/03_test_structure.md
+  - 第 12 章 &nbsp; 编写一个命令行程序:
+    - 12.1 &nbsp; IO示例项目: 12_cli/01_io_example_project.md
+  - 第 13 章 &nbsp; 函数式编程:
+    - 13.1 &nbsp; 闭包: 13_functional_programming/01_closure.md
+    - 13.2 &nbsp; 迭代器: 13_functional_programming/02_iterator.md
+    - 13.3 &nbsp; 使用迭代器优化IO项目: 13_functional_programming/03_io_with_iterator.md
+  - 第 14 章 &nbsp; Cargo和crate.io:
+    - 14.1 &nbsp; Cargo: 14_cargo_and_crates.io/01_cargo.md
+    - 14.2 &nbsp; 发布crate: 14_cargo_and_crates.io/02_publish_crate.md
+    - 14.3 &nbsp; Cargo工作空间: 14_cargo_and_crates.io/03_cargo_workspace.md
+    - 14.4 &nbsp; 安装二进制Crate: 14_cargo_and_crates.io/04_install_binary_crate.md
+  - 第 15 章 &nbsp; 智能指针:
+    - 15.1 &nbsp; 智能指针概述: 15_smart_pointer/01_smart_pointer.md
+    - 15.2 &nbsp; 使用Box指向Heap的数据: 15_smart_pointer/02_box_point_heap.md
+    - 15.3 &nbsp; Deref Trait: 15_smart_pointer/03_deref_trait.md
+    - 15.4 &nbsp; Drop Trait: 15_smart_pointer/04_drop_trait.md
+    - 15.5 &nbsp; Rc<T>: 15_smart_pointer/05_rc.md
+    - 15.6 &nbsp; RefCell<T>: 15_smart_pointer/06_ref_cell.md
+    - 15.7 &nbsp; 循环引用导致内存泄漏: 15_smart_pointer/07_loop_ref_leak.md
+  - 第 16 章 &nbsp; 无畏并发:
+    - 16.1 &nbsp; 多线程同时运行代码: 16_concurrency/01_multi_thread.md
+    - 16.1 &nbsp; 跨线程消息传递: 16_concurrency/02_cross_thread_message_passing.md
+    - 16.2 &nbsp; 共享状态的并发: 16_concurrency/03_shared_state_concurrency.md
+    - 16.3 &nbsp; Sync和Send扩展并发: 16_concurrency/04_sync_and_send.md
+  - 第 17 章 &nbsp; Rust面向对象编程:
+    - 17.1 &nbsp; 面向对象语言特性: 17_oop/01_oop_language_features.md
+    - 17.2 &nbsp; 使用trait存储不同类型值: 17_oop/02_trait_objects.md
+    - 17.3 &nbsp; 实现面向对象的设计模式: 17_oop/03_oop_design_patterns.md
+  - 第 18 章 &nbsp; 模式匹配:
+    - 18.1 &nbsp; 用到模式匹配的地方: 18_pattern_matching/01_how_to_use_pattern_matching.md
+    - 18.2 &nbsp; 模式匹配可失败性: 18_pattern_matching/02_pattern_matching_failure.md
+    - 18.3 &nbsp; 模式匹配语法: 18_pattern_matching/03_match_grammer.md
+  - 第 19 章 &nbsp; 高级特性:
+    - 19.1 &nbsp; 不安全Rust: 19_advanced_features/01_unsafe_rust.md
+    - 19.2 &nbsp; 高级Trait: 19_advanced_features/02_advanced_trait.md
+    - 19.3 &nbsp; 高级类型: 19_advanced_features/03_advanced_type.md
+    - 19.4 &nbsp; 高级函数和闭包: 19_advanced_features/04_advanced_function.md
+    - 19.5 &nbsp; 宏: 19_advanced_features/04_macro.md
+  - 参考资料: reference.md
