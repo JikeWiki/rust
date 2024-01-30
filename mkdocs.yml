@@ -171,9 +171,9 @@ nav:
     - 15.7 &nbsp; 循环引用导致内存泄漏: 15_smart_pointer/07_loop_ref_leak.md
   - 第 16 章 &nbsp; 无畏并发:
     - 16.1 &nbsp; 多线程同时运行代码: 16_concurrency/01_multi_thread.md
-    - 16.1 &nbsp; 跨线程消息传递: 16_concurrency/02_cross_thread_message_passing.md
-    - 16.2 &nbsp; 共享状态的并发: 16_concurrency/03_shared_state_concurrency.md
-    - 16.3 &nbsp; Sync和Send扩展并发: 16_concurrency/04_sync_and_send.md
+    - 16.2 &nbsp; 跨线程消息传递: 16_concurrency/02_cross_thread_message_passing.md
+    - 16.3 &nbsp; 共享状态的并发: 16_concurrency/03_shared_state_concurrency.md
+    - 16.4 &nbsp; Sync和Send扩展并发: 16_concurrency/04_sync_and_send.md
   - 第 17 章 &nbsp; Rust面向对象编程:
     - 17.1 &nbsp; 面向对象语言特性: 17_oop/01_oop_language_features.md
     - 17.2 &nbsp; 使用trait存储不同类型值: 17_oop/02_trait_objects.md
