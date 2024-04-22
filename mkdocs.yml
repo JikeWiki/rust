@@ -188,4 +188,7 @@ nav:
     - 19.3 &nbsp; 高级类型: 19_advanced_features/03_advanced_type.md
     - 19.4 &nbsp; 高级函数和闭包: 19_advanced_features/04_advanced_function.md
     - 19.5 &nbsp; 宏: 19_advanced_features/04_macro.md
+  - 第 20 章 &nbsp; 简易并发:
+    - 20.1 &nbsp; 什么是并发: 20_simple_concurrency/01_what_is_concurrency.md
+    - 20.2 &nbsp; 简易并发示例: 20_simple_concurrency/02_a_simple_concurrency_example.md
   - 参考资料: reference.md
