@@ -69,3 +69,137 @@ Nginx 并不是典型的多线程服务器，Nginx 采用了事件驱动的并�
 Rust 的异步编程模型基于 Future 和 Executor，通过 async/await 关键字和 futures 库来实现。异步编程允许在单个线程或者多个线程上处理多个并发任务，提高系统的性能和资源利用率。
 
 ## 四、编写 Rust 异步程序
+
+### 4.1 同步多任务 - 顺序执行文件读取任务
+
+我们简单模拟两个任务，接下来我们来编写一个简单的同步程序：
+
+```rust
+use std::{thread::sleep, time::Duration};
+
+fn main() {
+    println!("Hello, before read file!");
+    let file1_content = read_from_file1();
+    println!("{:?}", file1_content);
+
+    let file2_content = read_from_file2();
+    println!("{:?}", file2_content);
+    println!("Hello, after read file2!");
+}
+
+fn read_from_file1() -> String {
+    sleep(Duration::new(4, 0));
+    String::from("Hello, there from file 1")
+}
+
+fn read_from_file2() -> String {
+    sleep(Duration::new(2, 0));
+    String::from("Hello, there from file 2")
+}
+```
+
+以上程序的执行结果如下：
+
+```bash
+Hello, before read file!
+"Hello, there from file 1"
+"Hello, there from file 2"
+Hello, after read file2!
+```
+
+在以上程序中，读取文件1花了4秒，读取文件2花了2秒，所以程序执行完之后，输出结果是按照顺序执行的。最终程序执行完成需要6秒。
+
+### 4.2 多线程多任务 - 并发执行文件读取任务
+
+在4.1中存在的问题是程序是同步执行的，即在读取文件1时会阻塞后续代码的执行，直到文件1读取完成才会开始读取文件2。这导致程序的总执行时间等于两个任务中执行时间较长的那个任务的执行时间。在这个例子中，即使文件2的读取任务只需要2秒，但是因为文件1的读取任务需要4秒，所以整个程序的执行时间变成了6秒。
+
+为了解决这个问题，我们可以使用多线程来实现异步执行，如下代码
+
+```rust
+use std::thread;
+use std::thread::sleep;
+use std::time::Duration;
+
+fn main() {
+    println!("Hello, before read file!");
+    let handle1 = thread::spawn(move || {
+        let file1_content = read_from_file1();
+        println!("{:?}", file1_content);
+    });
+
+    let handle2 = thread::spawn(move || {
+        let file2_content = read_from_file2();
+        println!("{:?}", file2_content);
+    });
+
+    handle1.join().unwrap();
+    handle2.join().unwrap();
+}
+
+fn read_from_file1() -> String {
+    sleep(Duration::new(4, 0));
+    String::from("Hello, there from file 1")
+}
+
+fn read_from_file2() -> String {
+    sleep(Duration::new(2, 0));
+    String::from("Hello, there from file 2")
+}
+```
+
+以上代码中，使用了`thread::spawn`来创建两个线程，分别用于读取文件1和文件2。这样可以同时执行这两个任务，而不是等待第一个任务完成后才开始第二个任务。因此，总的执行时间将大大缩短。最后，调用了join方法来等待每个线程完成，并获取它们的结果。最终执行结果如下：
+
+```rust
+Hello, before read file!
+"Hello, there from file 2"
+"Hello, there from file 1"
+```
+
+### 4.3 使用Tokio实现异步任务 - 高效执行文件读取任务
+
+最后，我们需要使用Tokio来实现异步任务。Tokio 是一个基于 Rust 的异步运行时，它提供了一套工具和库，使得编写异步程序更加方便。相比于使用裸线程，Tokio 提供了更高级的抽象，使得异步编程变得更加简单和高效。实现步骤如下：
+
+首先我们需要执行`cargo add tokio`来添加tokio依赖。然后编写代码如下
+
+```rust
+use std::{thread::sleep, time::Duration};
+
+#[tokio::main]
+async fn main() {
+    println!("Hello, before read file!");
+
+    let h1 = tokio::spawn(async {
+        let _file1_content = read_from_file1().await;
+        println!("{:?}", _file1_content);
+    });
+
+    let h2 = tokio::spawn(async {
+        let _file2_content = read_from_file2().await;
+        println!("{:?}", _file2_content);
+    });
+
+    let _ = tokio::join!(h1, h2);
+}
+
+async fn read_from_file1() -> String {
+    sleep(Duration::new(4, 0));
+    println!("{:?}", "Processing file 1");
+    String::from("Hello, there from file 1")
+}
+
+async fn read_from_file2() -> String {
+    sleep(Duration::new(2, 0));
+    println!("{:?}", "Processing file 2");
+    String::from("Hello, there from file 2")
+}
+```
+
+以上代码使用了Tokio提供的异步功能来执行文件读取任务。在main函数中，我们使用`tokio::spawn`创建了两个异步任务，分别用于读取文件1和文件2。这样，这两个任务可以并行执行，而不会相互阻塞。
+
+当我们在异步函数中调用另一个异步函数时，需要使用 await 关键字来等待该异步函数的完成。在这个例子中，read_from_file1 和 read_from_file2 都是异步函数，因此在 main 函数中调用它们时，需要在其前面加上 await 关键字来等待它们的执行结果。
+
+最后，使用`tokio::join!`宏来等待两个异步任务完成。使用Tokio能够让我们更方便地编写异步程序，而不用关心底层的线程管理和调度。
+
+## 五、总结
+
+通过本文的介绍，我们了解了程序并发以及异步编程的基本概念。在现代计算机系统中，利用的异步编程可以充分利用系统资源，提高程序的性能和响应能力。而 Tokio 是一个基于 Rust 的异步运行时，提供了一套工具和库，使得我们编写 Rust 异步程序更加方便。
