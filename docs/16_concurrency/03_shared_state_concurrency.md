@@ -15,7 +15,7 @@ rust支持通过共享状态来实现并发。channel类似于单所有权，一
 
 ## 三、Mutex<T>的API
 
-通过`Mutex::new(数据)`来创建`Mutex<T>`，`Mutex<T>`是一个只能指针，在访问数据之前，通过`lock`方法来获取锁。这个方法会阻塞当前线程的执行，返回的是`MutexGuard`（智能指针，实现了Deref和Drop），但`lock`方法可能会失败。如下示例代码
+通过`Mutex::new(数据)`来创建`Mutex<T>`，`Mutex<T>`是一个智能指针，在访问数据之前，通过`lock`方法来获取锁。这个方法会阻塞当前线程的执行，返回的是`MutexGuard`（智能指针，实现了Deref和Drop），但`lock`方法可能会失败。如下示例代码
 
 ```rust
 use std::sync::Mutex;
